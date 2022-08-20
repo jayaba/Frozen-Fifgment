@@ -21,6 +21,7 @@ class MainScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 27.0),
             child: Text(
+
               'KEEPING YOU HEALTHY',
               style: TextStyle(
                 fontSize: 14,
@@ -32,6 +33,7 @@ class MainScreen extends StatelessWidget {
           ),
           Container(
             child: Text(
+
               'Let\'s start eating ',
               style: TextStyle(
                 fontSize: 38,
@@ -42,6 +44,7 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
+          
           Container(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
             padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
