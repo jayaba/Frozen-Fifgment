@@ -1,54 +1,50 @@
 import 'package:flutter/material.dart';
 
-import 'AppColors.dart';
+import 'BlueBerryShop.dart';
 
-class Test extends StatelessWidget {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class Test extends StatefulWidget {
+  List<String> aa = ['a', 'b', 'c', 'd', 'e'];
+  var titles = List<String>.generate(5, (index) => '$index');
 
-  String _name;
+  @override
+  State<Test> createState() => _TestState();
+}
 
-  static AppColors colors = AppColors();
-
+class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
       ),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-            child: Column(
-              children: [
-                TextFormField(
-                    maxLength: 20,
-                    decoration: InputDecoration(hintText: 'Name'),
-                    maxLines: 1,
-                    validator: (text) {
-                      if (text.isEmpty) {
-                        return 'Name cannot be empty';
-                      }
-                      return null;
-                    },
-                    onSaved: (text) {
-                      _name = text;
-                    }),
-                Container(
-                  child: RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                          print(_name);
-                        }
-                      },
-                      child: Text('Submit')),
-                )
-              ],
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return new Container(
+            margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+            height: 170.0,
+            width: 170,
+            child: new Container(
+              decoration: new BoxDecoration(
+                  color: Colors.grey[850],
+                  borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(70.0),
+                    topRight: const Radius.circular(70.0),
+                  )),
+              child: IconButton(
+                splashRadius: 105,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BlueBerryShop()));
+                },
+                icon: Image.asset(
+                  'images/blueberry.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
+        itemCount: widget.titles.length,
       ),
     );
   }
